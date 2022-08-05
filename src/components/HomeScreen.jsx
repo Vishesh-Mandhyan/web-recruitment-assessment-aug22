@@ -4,7 +4,7 @@ import { Button, Grid } from "@mui/material";
 const HomeScreen = () => {
   let session = {}
   const start = () => {
-    if(localStorage.getItem("Token")){
+    if(!localStorage.getItem("Token")){
       session = {
         token: "",
         score: 0,
