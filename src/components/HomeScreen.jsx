@@ -2,11 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Grid } from "@mui/material";
 const HomeScreen = () => {
+  let session = {}
   const start = () => {
-    const session = {
-      token: "",
-      score: 0,
-    };
+    if(localStorage.getItem("Token")){
+      session = {
+        token: "",
+        score: 0,
+      };
+    }
+    else{
+      session = {
+        token: "",
+        score: JSON.parse(localStorage.getItem("Token")).score,
+      };
+    }
     localStorage.setItem("Token", JSON.stringify(session));
   };
   const reset = () => {
