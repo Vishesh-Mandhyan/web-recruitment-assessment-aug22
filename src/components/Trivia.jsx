@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import DataContext from "../context/questionTypeContext";
+import DataContext from "../context/dataContext";
 import Question from "./Question";
 import { useNavigate } from "react-router-dom";
 const Trivia = () => {
@@ -20,6 +20,7 @@ const Trivia = () => {
           await axios.get(`${ApiUrl}/api.php?amount=5&token=${value.questionType.token}&difficulty=${value.questionType.difficulty}&type=${value.questionType.type}
         `);
         setData(response.data.results);
+        value.setQuestiontype({...value.questionType,type:"",difficulty:""})
       };
       getData();
     } catch (error) {

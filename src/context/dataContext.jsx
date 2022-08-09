@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
@@ -7,12 +7,18 @@ export const DataProvider = ({ children }) => {
     type: "",
     difficulty: "",
   });
-
+  const [incorrectAnswers, setIncorrectAnswers] = useState({
+    question: [],
+    correctAnswer: [],
+    incorrectAnswer: [],
+  });
   return (
     <DataContext.Provider
       value={{
         questionType,
         setQuestiontype,
+        incorrectAnswers,
+        setIncorrectAnswers
       }}
     >
       {children}
